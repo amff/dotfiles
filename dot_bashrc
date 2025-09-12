@@ -1,0 +1,28 @@
+#
+# ~/.bashrc
+#
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+PS1='[\u@\h \W]\$ '
+
+alias gl='git log --oneline --all --graph --decorate'
+alias gs='git status'
+alias vi='nvim'
+alias vim='nvim'
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias get_opam='eval $(opam env)'
+
+export EDITOR='nvim'
+export ZK_NOTEBOOK_DIR='/home/andre/notes'
+#eval $(keychain --eval --quiet ~/.ssh/id_rsa)
+
+export GPG_TTY="$(tty)" 
+export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
+export GPG_TTY=$(tty)
+gpg-connect-agent updatestartuptty /bye > /dev/null
+
+export PATH=${HOME}/bin:${PATH}
+
