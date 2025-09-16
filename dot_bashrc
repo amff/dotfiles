@@ -21,12 +21,27 @@ alias acrlogin='az acr login --name vortal'
 
 export EDITOR='nvim'
 export ZK_NOTEBOOK_DIR='/home/andre/notes'
-#eval $(keychain --eval --quiet ~/.ssh/id_rsa)
+#export BROWSER=/mnt/c/Program\ Files/Google/Chrome/Application/chrome.exe
+#export COMPOSE_PARALLEL_LIMIT=1
+
 
 export GPG_TTY="$(tty)" 
 export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye > /dev/null
 
-export PATH=${HOME}/bin:${PATH}
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "$HOME/.npm-packages/bin" ] ; then
+    PATH="$HOME/.npm-packages/bin:$PATH"
+fi
+
 
