@@ -30,18 +30,5 @@ export SSH_AUTH_SOCK="/run/user/$UID/gnupg/S.gpg-agent.ssh"
 export GPG_TTY=$(tty)
 gpg-connect-agent updatestartuptty /bye > /dev/null
 
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/bin" ] ; then
-    PATH="$HOME/bin:$PATH"
-fi
-
-# set PATH so it includes user's private bin if it exists
-if [ -d "$HOME/.local/bin" ] ; then
-    PATH="$HOME/.local/bin:$PATH"
-fi
-
-if [ -d "$HOME/.npm-packages/bin" ] ; then
-    PATH="$HOME/.npm-packages/bin:$PATH"
-fi
 
 
