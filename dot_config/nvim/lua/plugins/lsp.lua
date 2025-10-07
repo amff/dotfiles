@@ -66,14 +66,19 @@ return {
             vim.keymap.set('v', '<space>f', function() vim.lsp.buf.range_formatting { async = true } end, bufopts) -- mine
             vim.keymap.set('n', '<space>ts', builtin.lsp_document_symbols, bufopts) 
         end
+        local capabilities = require('cmp_nvim_lsp').default_capabilities()
         vim.lsp.config['roslyn_ls'] = {
-            cmd = { "dotnet", "/home/andre/sandbox/roslyn/Microsoft.CodeAnalysis.LanguageServer.dll", "--logLevel", "Information", "--extensionLogDirectory", "/tmp/roslyn_ls/logs", "--stdio" },
+            cmd = { "dotnet", "/home/andre/sandbox/roslyn/Microsoft.CodeAnalysis.LanguageServer.dll", "--logLevel", "Information", "--extensionLogDirectory", "/tmp/roslyn_ls/logs" },
+            on_attach = on_attach
+        }
+        vim.lsp.config['ocamllsp'] = {
             on_attach = on_attach
         }
 
         vim.lsp.enable('roslyn_ls')
-        local capabilities = require('cmp_nvim_lsp').default_capabilities()
-        local lspconfig = require('lspconfig')
+        vim.lsp.enable('ocamllsp')
+        --vim.lsp.enable('ocamllsp')
+        --local lspconfig = require('lspconfig')
 
         -- lspconfig.omnisharp.setup {
         --    capabilities = capabilities,
@@ -82,9 +87,9 @@ return {
         --    on_attach = on_attach 
         --}
 
-        lspconfig.ocamllsp.setup {
-            on_attach = on_attach
-        }
+        --lspconfig.ocamllsp.setup {
+        --    on_attach = on_attach
+        --}
 
     end
     }
