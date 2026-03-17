@@ -68,7 +68,7 @@ return {
         end
         local capabilities = require('cmp_nvim_lsp').default_capabilities()
         vim.lsp.config['roslyn_ls'] = {
-            cmd = { "dotnet", "/home/andre/sandbox/roslyn/Microsoft.CodeAnalysis.LanguageServer.dll", "--logLevel", "Information", "--extensionLogDirectory", "/tmp/roslyn_ls/logs" },
+            cmd = { "dotnet", "/home/andre/sandbox/roslyn/Release/net9.0/Microsoft.CodeAnalysis.LanguageServer.dll", "--logLevel", "Information", "--extensionLogDirectory", "/tmp/roslyn_ls/logs", "--stdio"  },
             on_attach = on_attach
         }
         vim.lsp.config['ocamllsp'] = {
@@ -77,6 +77,7 @@ return {
 
         vim.lsp.enable('roslyn_ls')
         vim.lsp.enable('ocamllsp')
+        vim.lsp.enable('hls')
         --vim.lsp.enable('ocamllsp')
         --local lspconfig = require('lspconfig')
 
