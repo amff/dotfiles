@@ -32,3 +32,5 @@ gpg-connect-agent updatestartuptty /bye > /dev/null
 
 
 
+
+#[ -f "/home/andre/.ghcup/env" ] && . "/home/andre/.ghcup/env" # ghcup-env
